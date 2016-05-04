@@ -1,0 +1,2 @@
+module StudyCarrelsHelper
+end

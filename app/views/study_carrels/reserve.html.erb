@@ -1,0 +1,13 @@
+<%- model_class = StudyCarrel -%>
+
+<div class="page-header">
+  <h1>soy papi</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dd><%= @study_carrel.max_number %></dd>
+  <dd><%= @study_carrel.code %></dd>
+</dl>
+
+<%= link_to t('back'), carrels_path, :class => 'btn btn-default'  %>
+<%= link_to t('cancel'), home_path, :class => 'btn btn-default' %>

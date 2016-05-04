@@ -1,0 +1,16 @@
+current directory: /Users/Gabriel/Desktop/SAAAE/path/gems/binding_of_caller-0.7.2/ext/binding_of_caller
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/bin/ruby -r ./siteconf20160503-44367-hjc8kj.rb extconf.rb
+
+current directory: /Users/Gabriel/Desktop/SAAAE/path/gems/binding_of_caller-0.7.2/ext/binding_of_caller
+make "DESTDIR=" clean
+make: *** No rule to make target `clean'.  Stop.
+
+current directory: /Users/Gabriel/Desktop/SAAAE/path/gems/binding_of_caller-0.7.2/ext/binding_of_caller
+make "DESTDIR="
+echo "Nada."
+Nada.
+
+current directory: /Users/Gabriel/Desktop/SAAAE/path/gems/binding_of_caller-0.7.2/ext/binding_of_caller
+make "DESTDIR=" install
+echo "Nada."
+Nada.

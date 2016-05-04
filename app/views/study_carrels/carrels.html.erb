@@ -1,0 +1,16 @@
+<h1> Cubiculos de estudio </h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>carrels</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @study_carrels.each do |carreles| %>
+    <tr>
+        <td> <%= link_to carreles.code, reserve_path(carreles.id) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
