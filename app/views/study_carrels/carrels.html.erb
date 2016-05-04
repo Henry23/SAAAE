@@ -9,7 +9,12 @@
   <tbody>
     <% @study_carrels.each do |carreles| %>
     <tr>
-        <td> <%= link_to carreles.code, reserve_path(carreles.id) %></td>
+        <td> <%= link_to carreles.code, reserve_path(carreles.id) %>
+        <p>  <%= image_tag("/assets/User-Group.png", width: '32', height: '32', alt: 'Site Logo', class: "logo") %>
+           <%= carreles.max_number %></p>
+         <p> <%= image_tag("/assets/Student-id-card.png", width: '32', height: '32', alt: 'Site Logo', class: "logo") %>
+           <%= carreles.max_number/2 %></p>
+</td>
     </tr>
     <% end %>
   </tbody>
