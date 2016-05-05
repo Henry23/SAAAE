@@ -13,24 +13,18 @@
 
 ActiveRecord::Schema.define(version: 20160504065029) do
 
-  create_table "hours_reserveds", force: :cascade do |t|
-    t.datetime "hour"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "students", force: :cascade do |t|
-    t.string   "name",           limit: 255
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.string   "account_number", limit: 255
+    t.string   "name"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "account_number"
   end
 
   create_table "study_carrels", force: :cascade do |t|
-    t.integer  "max_number", limit: 4
-    t.string   "code",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "max_number"
+    t.string   "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
