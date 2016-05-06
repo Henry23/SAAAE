@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160504065029) do
+ActiveRecord::Schema.define(version: 20160506201357) do
 
   create_table "students", force: :cascade do |t|
     t.string   "name"
@@ -23,8 +23,9 @@ ActiveRecord::Schema.define(version: 20160504065029) do
   create_table "study_carrels", force: :cascade do |t|
     t.integer  "max_number"
     t.string   "code"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.boolean  "enable",     default: true
   end
 
 end
