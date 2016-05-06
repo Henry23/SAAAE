@@ -10,7 +10,7 @@ class StudentsController < ApplicationController
   def home
     @student = Student.search(params[:search])
       if @student.count == 1
-        redirect_to carrels_path
+        redirect_to carrels_path(@student.first)
       end
    end
   # GET /students/1

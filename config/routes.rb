@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root to: 'students#home'
   get '/home' => 'students#home'
-  get '/carrels' => 'study_carrels#carrels'
+  get '/carrels/students/:id' => 'study_carrels#carrels', as: :carrels
   get '/reserve/:id' => 'study_carrels#reserve', as: :reserve
 
   # Example of regular route:

@@ -13,6 +13,7 @@ class StudyCarrelsController < ApplicationController
 
   def carrels
     @study_carrels = StudyCarrel.all
+    @student = Student.find(params[:id])
   end
   # GET /study_carrels/1
   # GET /study_carrels/1.json
