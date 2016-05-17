@@ -18,14 +18,14 @@
   <div class="form-group">
     <%= f.label :hora, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :hora, :class => 'form-control' %>
+      <%= f.time_field :hora, :class => 'form-control' %>
     </div>
     <%=f.error_span(:hora) %>
   </div>
   <div class="form-group">
     <%= f.label :fecha, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :fecha, :class => 'form-control' %>
+      <%= f.date_field :fecha, :class => 'form-control' %>
     </div>
     <%=f.error_span(:fecha) %>
   </div>
