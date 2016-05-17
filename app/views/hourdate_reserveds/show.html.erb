@@ -1,19 +1,21 @@
-<%- model_class = HoursReserved -%>
+<%- model_class = HourdateReserved -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:hour) %>:</strong></dt>
-  <dd><%= @hours_reserved.hour %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:hora) %>:</strong></dt>
+  <dd><%= @hourdate_reserved.hora %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:fecha) %>:</strong></dt>
+  <dd><%= @hourdate_reserved.fecha %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
-              hours_reserveds_path, :class => 'btn btn-default'  %>
+              hourdate_reserveds_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_hours_reserved_path(@hours_reserved), :class => 'btn btn-default' %>
+              edit_hourdate_reserved_path(@hourdate_reserved), :class => 'btn btn-default' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              hours_reserved_path(@hours_reserved),
+              hourdate_reserved_path(@hourdate_reserved),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>

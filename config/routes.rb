@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :hours_reserveds
+  resources :hourdate_reserveds
   resources :study_carrels #, only: [:carrels]
   resources :students#, only: [:home]
   # The priority is based upon order of creation: first created -> highest priority.
