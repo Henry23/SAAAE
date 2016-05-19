@@ -25,7 +25,6 @@ class HourdateReservedsController < ApplicationController
   # POST /hourdate_reserveds.json
   def create
     @hourdate_reserved = HourdateReserved.new(hourdate_reserved_params)
-
     respond_to do |format|
       if @hourdate_reserved.save
         format.html { redirect_to @hourdate_reserved, notice: 'Hourdate reserved was successfully created.' }
@@ -69,6 +68,6 @@ class HourdateReservedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hourdate_reserved_params
-      params.require(:hourdate_reserved).permit(:hora, :fecha)
+      params.require(:hourdate_reserved).permit(:hora, :study_carrel_id)
     end
 end

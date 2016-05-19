@@ -12,7 +12,7 @@ class StudyCarrelsController < ApplicationController
   end
 
   def carrels
-    @study_carrels = StudyCarrel.enable.all
+    @study_carrels = StudyCarrel.includes(:hourdate_reserved).all
     @student = Student.find(params[:id])
   end
   # GET /study_carrels/1

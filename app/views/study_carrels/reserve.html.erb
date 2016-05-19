@@ -7,6 +7,12 @@
 <dl class="dl-horizontal">
   <dd><%= @study_carrel.max_number %></dd>
   <dd><%= @study_carrel.code %></dd>
+  <% @study_carrel.hourdate_reserved.each do |t| %>
+    <dd><%= t.hora.strftime("%I")	%>
+        <%= t.hora.strftime("%M") %>
+        <%= t.hora.strftime("%p")	%></dd>
+  <% end %>
+
 </dl>
 
 <%= link_to t('back'), carrels_path, :class => 'btn btn-default'  %>

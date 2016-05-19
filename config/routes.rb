@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/home' => 'students#home'
   get '/carrels/students/:id' => 'study_carrels#carrels', as: :carrels
   get '/reserve/:id' => 'study_carrels#reserve', as: :reserve
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

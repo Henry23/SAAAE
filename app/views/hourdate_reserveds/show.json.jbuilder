@@ -1,1 +1,1 @@
-json.extract! @hourdate_reserved, :id, :hora, :fecha, :created_at, :updated_at
+json.extract! @hourdate_reserved, :id, :hora, :study_carrel_id, :created_at, :updated_at

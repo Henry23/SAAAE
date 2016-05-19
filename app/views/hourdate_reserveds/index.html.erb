@@ -7,7 +7,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:hora) %></th>
-      <th><%= model_class.human_attribute_name(:fecha) %></th>
+      <th><%= model_class.human_attribute_name(:study_carrel_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -17,7 +17,7 @@
       <tr>
         <td><%= link_to hourdate_reserved.id, hourdate_reserved_path(hourdate_reserved) %></td>
         <td><%= hourdate_reserved.hora %></td>
-        <td><%= hourdate_reserved.fecha %></td>
+        <td><%= hourdate_reserved.study_carrel_id %></td>
         <td><%=l hourdate_reserved.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
