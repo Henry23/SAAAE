@@ -15,6 +15,7 @@ class HourdateReservedsController < ApplicationController
   # GET /hourdate_reserveds/new
   def new
     @hourdate_reserved = HourdateReserved.new
+    @carrels = StudyCarrel.all
   end
 
   # GET /hourdate_reserveds/1/edit
