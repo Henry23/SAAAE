@@ -10,6 +10,7 @@ class HourdateReservedsController < ApplicationController
   # GET /hourdate_reserveds/1
   # GET /hourdate_reserveds/1.json
   def show
+    
   end
 
   # GET /hourdate_reserveds/new
@@ -20,6 +21,7 @@ class HourdateReservedsController < ApplicationController
 
   # GET /hourdate_reserveds/1/edit
   def edit
+    @carrels = StudyCarrel.all
   end
 
   # POST /hourdate_reserveds

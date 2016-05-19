@@ -11,16 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160519000745) do
+ActiveRecord::Schema.define(version: 20160519140048) do
 
   create_table "hourdate_reserveds", force: :cascade do |t|
     t.time     "hora"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "enable",          default: true
     t.integer  "study_carrel_id"
   end
 
-  add_index "hourdate_reserveds", ["study_carrel_id"], name: "index_hourdate_reserveds_on_study_carrel_id", unique: true
+  add_index "hourdate_reserveds", ["study_carrel_id"], name: "index_hourdate_reserveds_on_study_carrel_id"
 
   create_table "students", force: :cascade do |t|
     t.string   "name"
@@ -32,9 +33,8 @@ ActiveRecord::Schema.define(version: 20160519000745) do
   create_table "study_carrels", force: :cascade do |t|
     t.integer  "max_number"
     t.string   "code"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.boolean  "enable",     default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
