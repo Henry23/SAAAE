@@ -18,8 +18,8 @@ class ReservationsController < ApplicationController
   end
   
   def reserved
-    @carrels = StudyCarrel.includes(:hourdate_reserved).find(params[:id])
-    @student = Student.find(params[:id])
+    @carrels = StudyCarrel.includes(:hourdate_reserved).find(params[:carrel_id])
+    @student = Student.find(params[:student_id])
   end
 
   # GET /reservations/1/edit

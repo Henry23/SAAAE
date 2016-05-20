@@ -21,9 +21,7 @@
         <% if t.enable %>
         <%= check_box("puppy", "commands", {:multiple => true}, "sit", nil) %>
 
-        <dd> <%= t.hora.strftime("%I")	%>
-             <%= t.hora.strftime("%M") %>
-             <%= t.hora.strftime("%p")	%>
+        <dd> <%= t.hora.strftime("%I") + ":" + t.hora.strftime("%M") + " "+ t.hora.strftime("%p") %>
         </dd>
         <% elsif %>
           <p> en rojo </p>
@@ -38,5 +36,4 @@
   </tbody>
 </table>
 
-<%= @student.name %>
 <%= link_to 'Reservar', "/path", :class => 'btn btn-primary' %>

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root to: 'students#home'
   get '/home' => 'students#home'
   get '/carrels/students/:id' => 'study_carrels#carrels', as: :carrels
-  get '/assign/study_carrels/:id/students/:id' => 'reservations#reserved', as: :rassign
+  get '/assign/study_carrels/:carrel_id/students/:student_id' => 'reservations#reserved', as: :rassign
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
