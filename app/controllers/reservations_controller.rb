@@ -1,5 +1,6 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
+  require 'date'
 
   # GET /reservations
   # GET /reservations.json
@@ -18,9 +19,13 @@ class ReservationsController < ApplicationController
   end
   
   def reserved
+    @_date = Date.today 
     @reservation = Reservation.new
     @carrels = StudyCarrel.includes(:hourdate_reserved).find(params[:carrel_id])
     @student = Student.find(params[:student_id])
+    @reservation.student_id = @student.id
+    @reservation.study_carrel_id = @carrels.id
+    @reservation.save
   end
 
   # GET /reservations/1/edit
@@ -75,6 +80,6 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.fetch(:reservation, {})
+      params.require(:reservation).permit(:reserved_day)
     end
 end

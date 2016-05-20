@@ -1,4 +1,5 @@
 class Student < ActiveRecord::Base
+  belongs_to :reservation
 
   def self.search(search)
     if search

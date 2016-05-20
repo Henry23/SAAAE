@@ -18,7 +18,7 @@
         <td><%= link_to study_carrel.id, study_carrel_path(study_carrel) %></td>
         <td><%= study_carrel.max_number %></td>
         <td><%= study_carrel.code %></td>
-        <td><%=l study_carrel.created_at %></td>
+        <td><%= study_carrel.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_study_carrel_path(study_carrel), :class => 'btn btn-default btn-xs' %>

@@ -6,6 +6,9 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:study_carrel_id) %></th>
+      <th><%= model_class.human_attribute_name(:student_id) %></th>
+      <th><%= model_class.human_attribute_name(:reserved_day) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -14,7 +17,10 @@
     <% @reservations.each do |reservation| %>
       <tr>
         <td><%= link_to reservation.id, reservation_path(reservation) %></td>
-        <td><%=l reservation.created_at %></td>
+        <td><%= reservation.study_carrel_id %></td>
+        <td><%= reservation.student_id %></td>
+        <td><%= reservation.reserved_day %></td>
+        <td><%= reservation.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_reservation_path(reservation), :class => 'btn btn-default btn-xs' %>
