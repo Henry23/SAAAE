@@ -7,7 +7,7 @@
 			<div class="thumbnail">
 					
 				<div class="caption">
-					<h3>Codigo: <%= link_to carreles.code, reserve_path(carreles.id) %></h3> 
+					<h3>Codigo: <%= link_to carreles.code, rassign_path(carreles, @student) %></h3> 
 					<p> Capacidad maxima: 
 						 <%= carreles.max_number %> <%= image_tag("/assets/User-Group.png", width: '32', height: '32', alt: 'Site Logo', class: "logo") %></p>
 					 <p> Carnes requeridos:
@@ -18,4 +18,3 @@
 	<% end %>
 </div>
 
-<%= @student.name %>

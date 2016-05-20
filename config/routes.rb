@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reservations
   resources :hourdate_reserveds
   resources :study_carrels #, only: [:carrels]
   resources :students#, only: [:home]
@@ -10,9 +11,8 @@ Rails.application.routes.draw do
   root to: 'students#home'
   get '/home' => 'students#home'
   get '/carrels/students/:id' => 'study_carrels#carrels', as: :carrels
-  get '/reserve/:id' => 'study_carrels#reserve', as: :reserve
+  get '/assign/study_carrels/:id/students/:id' => 'reservations#reserved', as: :rassign
   
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -16,12 +16,18 @@
   </thead>
   <tbody>
     <tr>
-      <% @study_carrel.hourdate_reserved.each do |t| %>
+      <% @carrels.hourdate_reserved.each do |t| %>
       <td>  
+        <% if t.enable %>
+        <%= check_box("puppy", "commands", {:multiple => true}, "sit", nil) %>
+
         <dd> <%= t.hora.strftime("%I")	%>
              <%= t.hora.strftime("%M") %>
              <%= t.hora.strftime("%p")	%>
         </dd>
+        <% elsif %>
+          <p> en rojo </p>
+        <% end %>
       </td>
       <td>
         <%= link_to "Escojer", "/path1",:class => 'btn btn-default btn-xs' %>
@@ -31,3 +37,6 @@
     <% end %>
   </tbody>
 </table>
+
+<%= @student.name %>
+<%= link_to 'Reservar', "/path", :class => 'btn btn-primary' %>

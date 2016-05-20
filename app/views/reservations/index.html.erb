@@ -1,4 +1,4 @@
-<%- model_class = HourdateReserved -%>
+<%- model_class = Reservation -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
@@ -6,26 +6,20 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:hora) %></th>
-      <th><%= model_class.human_attribute_name(:study_carrel_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%= model_class.human_attribute_name(:enable) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
-    <% @hourdate_reserveds.each do |hourdate_reserved| %>
+    <% @reservations.each do |reservation| %>
       <tr>
-        <td><%= link_to hourdate_reserved.id, hourdate_reserved_path(hourdate_reserved) %></td>
-        <td><%= hourdate_reserved.hora %></td>
-        <td><%= hourdate_reserved.study_carrel_id %></td>
-        <td><%= hourdate_reserved.created_at %></td>
-        <td><%= hourdate_reserved.enable %> </td>
+        <td><%= link_to reservation.id, reservation_path(reservation) %></td>
+        <td><%=l reservation.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_hourdate_reserved_path(hourdate_reserved), :class => 'btn btn-default btn-xs' %>
+                      edit_reservation_path(reservation), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      hourdate_reserved_path(hourdate_reserved),
+                      reservation_path(reservation),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-xs btn-danger' %>
@@ -36,5 +30,5 @@
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_hourdate_reserved_path,
+            new_reservation_path,
             :class => 'btn btn-primary' %>
