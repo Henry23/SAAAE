@@ -19,6 +19,8 @@ class ReservationsController < ApplicationController
   end
   
   def reserved
+    @hourReserved = HourReserved.new
+    @hourReserved
     @_date = Date.today 
     @reservation = Reservation.new
     @carrels = StudyCarrel.includes(:hourdate_reserved).find(params[:carrel_id])

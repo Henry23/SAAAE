@@ -1,0 +1,27 @@
+<%= form_for @hour_reserved, :html => { :class => "form-horizontal hour_reserved" } do |f| %>
+
+  <% if @hour_reserved.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@hour_reserved.errors.count, "error") %> prohibited this hour_reserved from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @hour_reserved.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                hour_reserveds_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

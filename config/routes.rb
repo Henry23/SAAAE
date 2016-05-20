@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :hour_reserveds
   resources :reservations
   resources :hourdate_reserveds
   resources :study_carrels #, only: [:carrels]
