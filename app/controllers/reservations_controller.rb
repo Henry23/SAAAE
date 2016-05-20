@@ -18,6 +18,7 @@ class ReservationsController < ApplicationController
   end
   
   def reserved
+    @reservation = Reservation.new
     @carrels = StudyCarrel.includes(:hourdate_reserved).find(params[:carrel_id])
     @student = Student.find(params[:student_id])
   end

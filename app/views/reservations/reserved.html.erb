@@ -1,39 +1,37 @@
-<%- model_class = StudyCarrel -%>
+<%= form_for @reservation, :html => { :class => "form-horizontal reservation" } do |f| %>
 
 <div class="page-header">
   <h1>Tabla de Horas</h1>
 </div>
-
-<dl class="dl-horizontal">
-
-<dl class="dl-horizontal">
-  <table class="table table-striped">
-  <thead>
-    <tr>
-      <th> Hora Disponible </th>
-      <th> choose </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <% @carrels.hourdate_reserved.each do |t| %>
-      <td>  
-        <% if t.enable %>
-        <%= check_box("puppy", "commands", {:multiple => true}, "sit", nil) %>
-
-        <dd> <%= t.hora.strftime("%I") + ":" + t.hora.strftime("%M") + " "+ t.hora.strftime("%p") %>
-        </dd>
-        <% elsif %>
-          <p> en rojo </p>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to "Escojer", "/path1",:class => 'btn btn-default btn-xs' %>
-      </td>
-    </tr>
-    
-    <% end %>
-  </tbody>
+<table class="table table-striped" >
+    <thead>
+        <tr>
+            <th class="text-center"> Hora Disponible </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <% @carrels.hourdate_reserved.each do |t| %>
+            <td class = "text-center">
+            <% if t.enable %>
+                <%= f.check_box_tag :hora  %>
+                <%= f.label_tag(:hora, t.hora.strftime("%I") + ":" + t.hora.strftime("%M") + " "+ t.hora.strftime("%p") + " hasta las " + t.horaFinal.strftime("%I") + ":" + t.horaFinal.strftime("%M") + " "+ t.horaFinal.strftime("%p") )%>
+            <% elsif %>
+                <%= label_tag(:hora, t.hora.strftime("%I") + ":" + t.hora.strftime("%M") + " "+ t.hora.strftime("%p") + " hasta las " + t.horaFinal.strftime("%I") + ":" + t.horaFinal.strftime("%M") + " "+ t.horaFinal.strftime("%p"), :disabled => 'true')%>
+            <% end %>
+            </td>
+        </tr>
+            <% end %>
+    </tbody>
 </table>
 
-<%= link_to 'Reservar', "/path", :class => 'btn btn-primary' %>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                carrels_path(@student), :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

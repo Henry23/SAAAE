@@ -7,6 +7,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:hora) %></th>
+      <th><%= model_class.human_attribute_name(:horaFinal) %></th>
       <th><%= model_class.human_attribute_name(:study_carrel_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%= model_class.human_attribute_name(:enable) %></th>
@@ -18,6 +19,7 @@
       <tr>
         <td><%= link_to hourdate_reserved.id, hourdate_reserved_path(hourdate_reserved) %></td>
         <td><%= hourdate_reserved.hora %></td>
+        <td><%= hourdate_reserved.horaFinal%></td>
         <td><%= hourdate_reserved.study_carrel_id %></td>
         <td><%= hourdate_reserved.created_at %></td>
         <td><%= hourdate_reserved.enable %> </td>
