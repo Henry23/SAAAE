@@ -11,17 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160520230757) do
-
-  create_table "hour_reserveds", force: :cascade do |t|
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.integer  "reservation_id"
-    t.integer  "hourdate_reserved_id"
-  end
-
-  add_index "hour_reserveds", ["hourdate_reserved_id"], name: "index_hour_reserveds_on_hourdate_reserved_id"
-  add_index "hour_reserveds", ["reservation_id"], name: "index_hour_reserveds_on_reservation_id"
+ActiveRecord::Schema.define(version: 20160521011137) do
 
   create_table "hourdate_reserveds", force: :cascade do |t|
     t.time     "hora"
@@ -35,13 +25,15 @@ ActiveRecord::Schema.define(version: 20160520230757) do
   add_index "hourdate_reserveds", ["study_carrel_id"], name: "index_hourdate_reserveds_on_study_carrel_id"
 
   create_table "reservations", force: :cascade do |t|
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.integer  "study_carrel_id"
     t.integer  "student_id"
     t.date     "reserved_day"
+    t.integer  "hourdate_reserved_id"
   end
 
+  add_index "reservations", ["hourdate_reserved_id"], name: "index_reservations_on_hourdate_reserved_id"
   add_index "reservations", ["student_id"], name: "index_reservations_on_student_id"
   add_index "reservations", ["study_carrel_id"], name: "index_reservations_on_study_carrel_id"
 

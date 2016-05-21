@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :hour_reserveds
   resources :reservations
   resources :hourdate_reserveds
   resources :study_carrels #, only: [:carrels]
@@ -13,6 +12,7 @@ Rails.application.routes.draw do
   get '/home' => 'students#home'
   get '/carrels/students/:id' => 'study_carrels#carrels', as: :carrels
   get '/assign/study_carrels/:carrel_id/students/:student_id' => 'reservations#reserved', as: :rassign
+  get '/assign/hour_reserveds/:hour_id' => "hour_reserveds#index", as: :resassing
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
