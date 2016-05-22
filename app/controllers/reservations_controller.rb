@@ -23,9 +23,6 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new
     @carrels = StudyCarrel.includes(:hourdate_reserved).find(params[:carrel_id])
     @student = Student.find(params[:student_id])
-   #@reservation.student_id = @student.id
-   #@reservation.study_carrel_id = @carrels.id
-   #@reservation.save
   end
 
   # GET /reservations/1/edit
@@ -36,11 +33,10 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
-
     respond_to do |format|
       if @reservation.save
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
-        format.json { render :show, status: :created, location: @reservation }
+          format.html { redirect_to resassing_path(@reservation), notice: 'Reservation was successfully created.' }
+          format.json { render :show, status: :created, location: @reservation }
       else
         format.html { render :new }
         format.json { render json: @reservation.errors, status: :unprocessable_entity }
@@ -51,6 +47,7 @@ class ReservationsController < ApplicationController
   # PATCH/PUT /reservations/1
   # PATCH/PUT /reservations/1.json
   def update
+    
     respond_to do |format|
       if @reservation.update(reservation_params)
         format.html { redirect_to @reservation, notice: 'Reservation was successfully updated.' }
@@ -80,6 +77,6 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit(:reserved_day, hourdate_reserved_id:[])
+      params.require(:reservation).permit(:reserved_day, :study_carrel_id, :student_id)
     end
 end

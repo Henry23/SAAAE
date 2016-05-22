@@ -11,30 +11,11 @@
     </div>
     <%= f.error_span(:horaFinal) %>
 </div>
-  
+<%= f.hidden_field :study_carrel_id, :value => @carrels.id %>
+<%= f.hidden_field :student_id, :value => @student.id %>
 
-  
-  <table class="table table-striped" >
-    <thead>
-        <tr>
-            <th class="text-center"> Hora Disponible </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <% @carrels.hourdate_reserved.each do |t| %>
-            <td class = "text-center">
-            <% if t.enable %>
-                <%= f.check_box_tag 'hourdate_reserved_id:[]' %>
-                <%= f.label_tag(:hourdate_reserved_id, t.hora.strftime("%I") + ":" + t.hora.strftime("%M") + " "+ t.hora.strftime("%p") + " hasta las " + t.horaFinal.strftime("%I") + ":" + t.horaFinal.strftime("%M") + " "+ t.horaFinal.strftime("%p")  )%>
-            <% elsif %>
-                <%= f.label_tag(:hourdate_reserved_id, t.hora.strftime("%I") + ":" + t.hora.strftime("%M") + " "+ t.hora.strftime("%p") + " hasta las " + t.horaFinal.strftime("%I") + ":" + t.horaFinal.strftime("%M") + " "+ t.horaFinal.strftime("%p"), :disabled => 'true')%>
-            <% end %>
-            </td>
-        </tr>
-        <% end %>
-    </tbody>
-    </table>
+
+
     
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
