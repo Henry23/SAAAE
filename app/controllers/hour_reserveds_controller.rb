@@ -43,7 +43,7 @@ class HourReservedsController < ApplicationController
   def update
     respond_to do |format|
       if @hour_reserved.update(hour_reserved_params)
-        format.html { redirect_to @hour_reserved, notice: 'Hour reserved was successfully updated.' }
+        format.html { redirect_to @hour_reserved, notice: 'Hour reserved was succes💖sfully updated.' }
         format.json { render :show, status: :ok, location: @hour_reserved }
       else
         format.html { render :edit }
@@ -73,7 +73,7 @@ class HourReservedsController < ApplicationController
       params.fetch(:hour_reserved, {})
     end
     def hour_reserved_params2
-      params.require(:hour_reserved).permit( :reservation_id,  hourdate_reserved_id:[] )
+      params.require(:hour_reserved).permit( :reservation_id,  :hourdate_reserved_id => [] )
     end
     
 end

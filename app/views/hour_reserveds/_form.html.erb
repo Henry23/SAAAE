@@ -14,16 +14,18 @@
       </div>
     </div>
   <% end %>
-
-<div class="field">
-  <%= f.label "Horas Disponbles" %><br />
-  <%= f.collection_check_boxes :hourdate_reserved_id, @hourdate_reserved, :id, :hora do |b| %>
-  <div class="collection-check-box">
-    <%= b.check_box %>
-    <%= b.label %>
+<div class ="text-center" >
+  <div class="field">
+    <%= f.label "Horas Disponbles" %><br />
+    <%= f.collection_check_boxes :hourdate_reserved_id, @hourdate_reserved, :id, :hora do |b| %>
+    <div class="collection-check-box">
+      <%= b.check_box %>
+      <%= b.text.strftime('%I:%M %p') %>
     </div>
     <% end %>
   </div>
+</div>
+
 
   <%= f.hidden_field :reservation_id, :value => @reservation.id %>
 
