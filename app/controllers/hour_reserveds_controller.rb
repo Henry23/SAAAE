@@ -16,7 +16,8 @@ class HourReservedsController < ApplicationController
   def new
     @hour_reserved = HourReserved.new
     @reservation = Reservation.find(params[:reservations_id])
-    @hourdate_reserved = HourdateReserved.enable.all
+    @hourdate_reserved = HourdateReserved.all
+    
   end
 
   # GET /hour_reserveds/1/edit
@@ -26,16 +27,24 @@ class HourReservedsController < ApplicationController
   # POST /hour_reserveds
   # POST /hour_reserveds.json
   def create
-    @hour_reserved = HourReserved.new(hour_reserved_params2)
+    @hour_reserved = HourReserved.new(hour_reserved_params)
+    #tenes q separar los ids en hour_reserved_params
+    #hacer un for de 0 hasta hour_reserved_params.id?
+    # para cada uno de los hour_reserved_params.id creas un nuevo @hour_reserved y lo salvas
+    
+    #for int=0; i<@hour_reserved.hourdate_reserved_id.length(); i++)   asi seria en java
+    #if(@hour_reserved.hourdate_reserved_id[i]!="")
+    # nuevaReservacion = HourReserved.new(@hour_reserved.hourdate_reserved_id[i],hour_reserved.reservation_id)
+    # nuevaReservacion.save
     respond_to do |format|
       if @hour_reserved.save
-        format.html { redirect_to @hour_reserved, notice: 'Hour reserved was successfully created.' }
+        format.html { redirect_to rstudent_path(@hour_reserved.reservation_id), notice: 'Hour reserved was successfully created.' }
         format.json { render :show, status: :created, location: @hour_reserved }
       else
         format.html { render :new }
         format.json { render json: @hour_reserved.errors, status: :unprocessable_entity }
       end
-    end
+  end
   end
 
   # PATCH/PUT /hour_reserveds/1
@@ -43,7 +52,7 @@ class HourReservedsController < ApplicationController
   def update
     respond_to do |format|
       if @hour_reserved.update(hour_reserved_params)
-        format.html { redirect_to @hour_reserved, notice: 'Hour reserved was succes💖sfully updated.' }
+        format.html { redirect_to @hour_reserved, notice: 'Hour reserved was successfully updated.' }
         format.json { render :show, status: :ok, location: @hour_reserved }
       else
         format.html { render :edit }
@@ -70,10 +79,7 @@ class HourReservedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hour_reserved_params
-      params.fetch(:hour_reserved, {})
-    end
-    def hour_reserved_params2
-      params.require(:hour_reserved).permit( :reservation_id,  :hourdate_reserved_id => [] )
+      params.require(:hour_reserved).permit( :reservation_id,  :hourdate_reserved_id)
     end
     
 end

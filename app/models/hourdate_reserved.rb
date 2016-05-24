@@ -10,5 +10,15 @@ class HourdateReserved < ActiveRecord::Base
                   
                   
     scope :enable, -> { where(enable: true) }
+    
+    #scope :get_hour, -> { where( "hora > Time.current.hour") }
+    
+   #  scope :by_hour, ->(hour) { where("hora('hour', time) = ?", hour) }
+     
+     
+     def self.get_hour
+        
+     end
+
 end
 

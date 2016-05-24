@@ -3,6 +3,8 @@ class Reservation < ActiveRecord::Base
     has_many :student
     has_many :hour_reserved
     has_many :hourdate_reserved
+    has_many :students_reserved
 
-    
+
+
 end

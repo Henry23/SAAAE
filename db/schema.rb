@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160522054308) do
+ActiveRecord::Schema.define(version: 20160523225946) do
 
   create_table "hour_reserveds", force: :cascade do |t|
     t.datetime "created_at",           null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20160522054308) do
     t.boolean  "enable",          default: true
     t.integer  "study_carrel_id"
     t.time     "horaFinal"
+    t.boolean  "enableTomorrow",  default: true
   end
 
   add_index "hourdate_reserveds", ["study_carrel_id"], name: "index_hourdate_reserveds_on_study_carrel_id"
@@ -51,6 +52,16 @@ ActiveRecord::Schema.define(version: 20160522054308) do
     t.datetime "updated_at",     null: false
     t.string   "account_number"
   end
+
+  create_table "students_reserveds", force: :cascade do |t|
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "reservation_id"
+    t.integer  "student_id"
+  end
+
+  add_index "students_reserveds", ["reservation_id"], name: "index_students_reserveds_on_reservation_id"
+  add_index "students_reserveds", ["student_id"], name: "index_students_reserveds_on_student_id"
 
   create_table "study_carrels", force: :cascade do |t|
     t.integer  "max_number"

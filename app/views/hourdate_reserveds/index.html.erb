@@ -7,10 +7,11 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:hora) %></th>
-      <th><%= model_class.human_attribute_name(:horaFinal) %></th>
+      <th><%= model_class.human_attribute_name("hora Final") %></th>
       <th><%= model_class.human_attribute_name(:study_carrel_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%= model_class.human_attribute_name(:enable) %></th>
+      <th><%= model_class.human_attribute_name(:enableTomorrow) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -18,11 +19,12 @@
     <% @hourdate_reserveds.each do |hourdate_reserved| %>
       <tr>
         <td><%= link_to hourdate_reserved.id, hourdate_reserved_path(hourdate_reserved) %></td>
-        <td><%= hourdate_reserved.hora %></td>
-        <td><%= hourdate_reserved.horaFinal%></td>
+        <td><%= hourdate_reserved.hora.strftime('%I:%M %p') %></td>
+        <td><%= hourdate_reserved.horaFinal.strftime('%I:%M %p') %></td>
         <td><%= hourdate_reserved.study_carrel_id %></td>
         <td><%= hourdate_reserved.created_at %></td>
         <td><%= hourdate_reserved.enable %> </td>
+        <td><%= hourdate_reserved.enableTomorrow %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_hourdate_reserved_path(hourdate_reserved), :class => 'btn btn-default btn-xs' %>
