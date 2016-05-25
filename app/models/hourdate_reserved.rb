@@ -4,9 +4,9 @@ class HourdateReserved < ActiveRecord::Base
     has_many :hour_reserved
     
     validates_presence_of :hora,
-                  message: "no puede estar en blanco"
+                  message: "La hora no puede estar en blanco"
     validates_presence_of :study_carrel_id,
-                  message: "no puede estar en blanco"
+                  message: "El id no puede estar en blanco"
                   
                   
     scope :enable, -> { where(enable: true) }

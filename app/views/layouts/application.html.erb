@@ -52,6 +52,59 @@
 			<li><%= link_to "", "/path2"  %></li>
 			<li><%= link_to "", "/path3"  %></li>
 		  </ul>
+          <ul class="nav navbar-nav navbar-right">
+			<li class="dropdown">
+			<% if user_signed_in? %>
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b><%= current_user.email %></b> <span class="caret"></span></a>
+			<ul class="dropdown-menu">              
+                  <% if current_user.admin? %> 
+                    <li> <%= link_to 'path1', "/path1"  %></li> 
+                    <li> <%= link_to 'path2', "/path2" %></li> 
+                  <% end %>
+                  <li class="divider"></li>
+                     <li> <%= link_to 'path1', "path1" %></li> 
+                     <li> <%= link_to 'path2', "path2" %></li>
+                     <li> <%= link_to 'path3', "path3" %></li>
+                     <li class="divider"></li>
+                  <li> <%= link_to 'editar user', edit_user_registration_path %></li>
+                  <li> <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>   </li>
+                 </ul>         
+			<% else %>	
+          	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+			<ul id="login-dp" class="dropdown-menu">
+				<li>
+					 <div class="row">
+							<div class="col-md-12">
+								Login via
+								 <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+										<div class="form-group">
+											 <label class="sr-only" for="exampleInputEmail2">Email address</label>
+											 <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+										</div>
+										<div class="form-group">
+											 <label class="sr-only" for="exampleInputPassword2">Password</label>
+											 <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                                             <div class="help-block text-right"><a href="">Forget the password ?</a></div>
+										</div>
+										<div class="form-group">
+											 <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+										</div>
+										<div class="checkbox">
+											 <label>
+											 <input type="checkbox"> keep me logged-in
+											 </label>
+										</div>
+								 </form>
+							</div>
+							<div class="bottom text-center">
+								New here ? <a href="#"><b>Join Us</b></a>
+							</div>
+						 </div>
+						 <% end %>
+					</li>
+				</ul>
+        	</li>
+		  </ul>
 		</div>
 	  </div>
 	</div>

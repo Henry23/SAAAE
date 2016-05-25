@@ -20,12 +20,12 @@
   <div class ="text-center" >
   <div class="field">
     <%= f.label "Horas Disponbles" %><br />
-    <%= f.collection_radio_buttons :hourdate_reserved_id, @hourdate_reserved , :id, :hora do |b| %>
+    <%= f.collection_check_boxes :hourdate_reserved_id, @hourdate_reserved , :id, :hora do |b| %>
     <div class="collection-check-box">
     <% if @reservation.reserved_day  == Date.today %>
       <% if @hourdate_reserved.find_by_id(b.value).hora.hour > Time.current.hour %>  
         <% if @hourdate_reserved.find_by_id(b.value).enable %>
-          <%= b.radio_button %>
+          <%= b.check_box %>
           <%= b.text.strftime('%I:%M %p') %>      
         <% else %>
           <%= b.text.strftime('%I:%M %p') %>      
