@@ -14,6 +14,35 @@
 <%= f.hidden_field :study_carrel_id, :value => @carrels.id %>
 <%= f.hidden_field :student_id, :value => @student.id %>
 
+
+
+  <!-- falta validar que solo muestre las hoy disponibls de hoy -->
+  <div class ="text-center" >
+  <div class="field">
+    <%= f.label "Horas Disponbles" %><br />
+    <%= f.collection_check_boxes :hourdate_reserved_id, @hourdate_reserved , :id, :hora do |b| %>
+    <% if @hourdate_reserved.find_by_id(b.value).enable %>
+      <!-- horas de hoy  -->
+      <div class="collection-check-box">
+        <%= b.check_box %>
+        <%= b.text.strftime('%I:%M %p') %>      
+      </div>
+      <% elsif @hourdate_reserved.find_by_id(b.value).enableTomorrow %>
+      <!-- horas de manaña -->
+      <div class="collection-check-box">
+        <%= b.check_box %>
+        <%= b.text.strftime('%I:%M %p') %>      
+      </div>
+      <% else %>
+      <!-- solo mostrostramos las horas pero no el check_box -->
+      <div class="collection-check-box">
+        <%= b.text.strftime('%I:%M %p') %> 
+      </div>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
       <%= f.submit nil, :class => 'btn btn-primary' %>

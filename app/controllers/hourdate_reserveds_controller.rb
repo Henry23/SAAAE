@@ -27,6 +27,7 @@ class HourdateReservedsController < ApplicationController
   # POST /hourdate_reserveds
   # POST /hourdate_reserveds.json
   def create
+    puts(hourdate_reserved_params)
     @hourdate_reserved = HourdateReserved.new(hourdate_reserved_params)
     respond_to do |format|
       if @hourdate_reserved.save

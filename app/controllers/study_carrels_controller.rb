@@ -1,6 +1,6 @@
 class StudyCarrelsController < ApplicationController
   before_action :set_study_carrel, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
   # GET /study_carrels
   # GET /study_carrels.json
   def index

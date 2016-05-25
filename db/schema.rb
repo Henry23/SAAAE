@@ -11,17 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160524222517) do
-
-  create_table "hour_reserveds", force: :cascade do |t|
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.integer  "hourdate_reserved_id"
-    t.integer  "reservation_id"
-  end
-
-  add_index "hour_reserveds", ["hourdate_reserved_id"], name: "index_hour_reserveds_on_hourdate_reserved_id"
-  add_index "hour_reserveds", ["reservation_id"], name: "index_hour_reserveds_on_reservation_id"
+ActiveRecord::Schema.define(version: 20160525054657) do
 
   create_table "hourdate_reserveds", force: :cascade do |t|
     t.time     "hora"
@@ -36,11 +26,12 @@ ActiveRecord::Schema.define(version: 20160524222517) do
   add_index "hourdate_reserveds", ["study_carrel_id"], name: "index_hourdate_reserveds_on_study_carrel_id"
 
   create_table "reservations", force: :cascade do |t|
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.integer  "study_carrel_id"
     t.integer  "student_id"
     t.date     "reserved_day"
+    t.string   "hourdate_reserved_id"
   end
 
   add_index "reservations", ["student_id"], name: "index_reservations_on_student_id"
@@ -51,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160524222517) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.string   "account_number"
+    t.string   "rfid_id"
   end
 
   create_table "students_reserveds", force: :cascade do |t|
@@ -71,19 +63,19 @@ ActiveRecord::Schema.define(version: 20160524222517) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.boolean  "admin"
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "admin",                  default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

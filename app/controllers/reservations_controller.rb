@@ -23,6 +23,9 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new
     @carrels = StudyCarrel.includes(:hourdate_reserved).find(params[:carrel_id])
     @student = Student.find(params[:student_id])
+    
+    #@reservation = Reservation.find(params[:reservations_id])
+    @hourdate_reserved = HourdateReserved.all
   end
 
   # GET /reservations/1/edit
@@ -77,6 +80,6 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit(:reserved_day, :study_carrel_id, :student_id)
+      params.require(:reservation).permit(:reserved_day, :study_carrel_id, :student_id, :hourdate_reserved_id => [] )
     end
 end

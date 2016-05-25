@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :students_reserveds
-  resources :hour_reserveds
   resources :reservations
   resources :hourdate_reserveds
-  resources :study_carrels #, only: [:carrels]
-  resources :students#, only: [:home]
+  resources :study_carrels
+  resources :students
+  resources :volume_meter
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   get '/home' => 'students#home'
   get '/carrels/students/:id' => 'study_carrels#carrels', as: :carrels
   get '/assign/study_carrels/:carrel_id/students/:student_id' => 'reservations#reserved', as: :rassign
-  get '/assign/reservations/:reservations_id' => "hour_reserveds#new", as: :resassing
-  get '/assign/hour_reserveds/:id' => "students_reserveds#new", as: :rstudent
+  get '/assign/reservations/:id' => "students_reserveds#new", as: :resassing
+  get '/volume_meter' => 'volume_meter#index'
   # Example of regular route:hour_reserveds
   #   get 'products/:id' => 'catalog#view'
 
