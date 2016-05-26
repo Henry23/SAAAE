@@ -25,19 +25,19 @@
       <%= f.collection_check_boxes :hourdate_reserved_id, @hourdate_reserved , :id, :hora do |b| %>
       <% if @hourdate_reserved.find_by_id(b.value).enable %>
         <!-- horas de hoy  -->
-        <div class="collection-check-box col-md-4">
+        <div class="collection-check-box col-md-4 horas">
           <%= b.check_box %>
           <%= b.text.strftime('%I:%M %p') %>      
         </div>
         <% elsif @hourdate_reserved.find_by_id(b.value).enableTomorrow %>
         <!-- horas de manaña -->
-        <div class="collection-check-box col-md-4">
+        <div class="collection-check-box col-md-4 horas">
           <%= b.check_box %>
           <%= b.text.strftime('%I:%M %p') %>      
         </div>
         <% else %>
-        <!-- solo mostrostramos las horas pero no el check_box -->
-        <div class="collection-check-box col-md-4">
+        <!-- solo mostramos las horas pero no el check_box -->
+        <div class="collection-check-box col-md-4 horas">
           <%= b.text.strftime('%I:%M %p') %> 
         </div>
         <% end %>

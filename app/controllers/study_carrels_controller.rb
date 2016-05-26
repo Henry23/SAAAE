@@ -79,4 +79,8 @@ class StudyCarrelsController < ApplicationController
     def study_carrel_params
       params.require(:study_carrel).permit(:max_number, :code)
     end
+    
+    rescue_from CanCan::AccessDenied do |exception|
+     redirect_to root_url, :alert => exception.message
+   end
 end
