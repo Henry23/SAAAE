@@ -2,6 +2,7 @@ class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
   require 'date'
 
+  load_and_authorize_resource
   # GET /reservations
   # GET /reservations.json
   def index
@@ -82,4 +83,9 @@ class ReservationsController < ApplicationController
     def reservation_params
       params.require(:reservation).permit(:reserved_day, :study_carrel_id, :student_id, :hourdate_reserved_id => [] )
     end
+    
+    rescue_from CanCan::AccessDenied do |exception|
+     redirect_to root_url, :alert => exception.message
+   end
+
 end

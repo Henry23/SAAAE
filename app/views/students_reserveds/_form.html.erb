@@ -15,16 +15,41 @@
     </div>
   <% end %>
 
+<!-- reservation -->
+<%= f.hidden_field :reservation_id, :value => @reservation.id %>
 
+<!-- los studiantes -->
+
+  <% ( @carrels.max_number / 2 -1).times do |t| %>
+     <%= f.label :student_id, "Carnet", :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.text_field :student_id, :class => 'form-control', autofocus: true %>
+        <br />
+      </div>
+     <%=f.error_span(:hora) %>
+  <% end %>
+  
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
+      <br />
+      <br />
       <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                students_reserveds_path, :class => 'btn btn-default' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")), students_reserveds_path, :class => 'btn btn-default' %>
     </div>
   </div>
+<% end %>
+
+
+<!-- just testing -->
+<%  @reservation.id %>
+<%  @carrels.max_number / 2 %>
+<!-- like a pro -->
+<% HourdateReserved.find_by_id(@reservation.hourdate_reserved_id[2,2].to_f).hora %>
+<% @arry = @reservation.hourdate_reserved_id.split(",") %>
+<% @arry.each do |t| %>
+<% t[2,2].to_f %>
 
 <% end %>
 
-<%=  @reservation.id %>
-<%=  @carrels.max_number / 2 %>
+
+

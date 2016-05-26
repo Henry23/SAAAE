@@ -21,3 +21,11 @@
 
 en:
   hello: "Hello world"
+  unauthorized:
+    default: "Error"
+    manage:
+      all: "No esta autorizado para ingresar a %{subject}."
+      user: "No esta permitido administrar otras cuentas."
+    update:
+      project: "No esta permitido actualizar este proyecto."
+

@@ -1,6 +1,7 @@
 class HourdateReservedsController < ApplicationController
   before_action :set_hourdate_reserved, only: [:show, :edit, :update, :destroy]
 
+  load_and_authorize_resource
   # GET /hourdate_reserveds
   # GET /hourdate_reserveds.json
   def index
@@ -74,4 +75,8 @@ class HourdateReservedsController < ApplicationController
     def hourdate_reserved_params
       params.require(:hourdate_reserved).permit(:hora, :study_carrel_id, :enable, :horaFinal)
     end
+    
+    rescue_from CanCan::AccessDenied do |exception|
+     redirect_to root_url, :alert => exception.message
+   end
 end

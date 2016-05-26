@@ -1,6 +1,6 @@
 class StudentsReservedsController < ApplicationController
   before_action :set_students_reserved, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
   # GET /students_reserveds
   # GET /students_reserveds.json
   def index
@@ -26,11 +26,11 @@ class StudentsReservedsController < ApplicationController
   # POST /students_reserveds
   # POST /students_reserveds.json
   def create
-    @students_reserved = StudentsReserved.new(students_reserved_params)
+    @students_reserved = StudentsReserved.new(students_reserved_params2)
 
     respond_to do |format|
       if @students_reserved.save
-        format.html { redirect_to @students_reserved, notice: 'Students reserved was successfully created.' }
+        format.html { redirect_to home_path, notice: 'Students reserved was successfully created.' }
         format.json { render :show, status: :created, location: @students_reserved }
       else
         format.html { render :new }
@@ -73,4 +73,12 @@ class StudentsReservedsController < ApplicationController
     def students_reserved_params
       params.fetch(:students_reserved, {})
     end
+    
+    def students_reserved_params2
+      params.require(:students_reserved).permit(:reservation_id, :student_id => [] )
+    end
+    
+    rescue_from CanCan::AccessDenied do |exception|
+     redirect_to root_url, :alert => exception.message
+   end
 end

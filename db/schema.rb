@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160525054657) do
+ActiveRecord::Schema.define(version: 20160525194138) do
 
   create_table "hourdate_reserveds", force: :cascade do |t|
     t.time     "hora"
@@ -49,11 +49,10 @@ ActiveRecord::Schema.define(version: 20160525054657) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "reservation_id"
-    t.integer  "student_id"
+    t.string   "student_id"
   end
 
   add_index "students_reserveds", ["reservation_id"], name: "index_students_reserveds_on_reservation_id"
-  add_index "students_reserveds", ["student_id"], name: "index_students_reserveds_on_student_id"
 
   create_table "study_carrels", force: :cascade do |t|
     t.integer  "max_number"

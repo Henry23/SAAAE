@@ -37,6 +37,9 @@ class Ability
       else
         can :home, Student 
         can :carrels, StudyCarrel
+        can :reserved, Reservation
+        can :create, Reservation
+        can :create, StudentsReserved
       end 
     end
 end

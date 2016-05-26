@@ -32,6 +32,7 @@
 			<li><%= link_to "", "/path2"  %></li>
 			<li><%= link_to "", "/path3"  %></li>
 		  </ul>
+		  <% if user_signed_in? %>
           <ul class="nav navbar-nav navbar-right">
 			<li class="dropdown">
 			<% if user_signed_in? %>
@@ -46,7 +47,7 @@
 
                      <li class="divider"></li>
                 <% end %> 
-                  <li> <%= link_to 'editar ', edit_user_registration_path %></li>
+                  <li> <%= link_to 'Editar ', edit_user_registration_path %></li>
                   <li> <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>   </li>
                  </ul>         
 			<% else %>	
@@ -84,6 +85,7 @@
 						 <% end %>
 					</li>
 				</ul>
+				<% end %>
         	</li>
 		  </ul>
 		</div>
