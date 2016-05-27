@@ -44,10 +44,11 @@
                      <li> <%= link_to 'Cubículos', study_carrels_path %></li>
                      <li> <%= link_to 'Horas de los cubículos', hourdate_reserveds_path %></li>
                      <li> <%= link_to 'Reservaciones', reservations_path %></li>
-
+                     <li> <%= link_to 'Reservación de estudiantes', students_reserveds_path %></li>
+				     <li> <%= link_to 'Volumen meter', "/volume_meter" %></li>
                      <li class="divider"></li>
                 <% end %> 
-                  <li> <%= link_to 'Editar ', edit_user_registration_path %></li>
+                 <!-- <li> <%= link_to 'Editar ', "" %></li> -->
                   <li> <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>   </li>
                  </ul>         
 			<% else %>	

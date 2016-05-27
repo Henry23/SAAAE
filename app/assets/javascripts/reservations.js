@@ -4,3 +4,4 @@ function myFunction() {
     console.log(x);
     document.getElementById("demo").innerHTML = "You selected: " + x;
 }
+console.log("hola");
