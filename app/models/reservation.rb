@@ -4,7 +4,7 @@ class Reservation < ActiveRecord::Base
     has_many :hourdate_reserved
     has_many :students_reserved
     
-    #before_save :check
+    #after_save :check
     
     validates_presence_of :study_carrel_id,
                   message: "no puede estar en blanco"
@@ -19,12 +19,23 @@ class Reservation < ActiveRecord::Base
                   message: "no puede estar en blanco" 
                   
                   
-    validates :hourdate_reserved_id, length: { minimum: 5 }
+    validates :hourdate_reserved_id, length: { minimum: 5 ,
+                message: "Seleccione al menos una hora para reservar"}
 
-    def check 
-        if self.hourdate_reserved_id.split(",").size == 1
-            return false
-        end
+    def check
+        @horas = self.hourdate_reserved_id.split(",")
+        @fecha = self.reserved_day
+        @horas.each do |t|
+        @horafecha = StudyCarrel.includes(:hourdate_reserved).find(t[2][2].to_f)
+            if @fecha == Date.today 
+                #hoy
+                @horafecha.hourdate_reserved.enable = false
+            else
+                #mañana
+                @horafecha.hourdate_reserved.enableTomorrow = false
+            end
+            @horafecha.save
+        end    
     end
 
 end

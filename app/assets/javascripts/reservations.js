@@ -1,5 +1,4 @@
-
-   var Check_Valid_Hours = function(){
+var Check_Valid_Hours = function(){
        var current_date = $('#select_id option:selected');
        if (current_date.text() === "Hoy") {
            //validar la hora actual con las que se muestran

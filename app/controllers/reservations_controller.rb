@@ -34,8 +34,23 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
+    @carrels = StudyCarrel.includes(:hourdate_reserved).find(@reservation.study_carrel_id)
+    @student = Student.find(@reservation.student_id)
+    @_tomorrow = Date.today + 1
+    @_date = Date.today 
     respond_to do |format|
       if @reservation.save
+          #@horasFecha = StudyCarrel.includes(:hourdate_reserved).find_by_id(@reservation.study_carrel_id)
+          #@idArray = @reservation.hourdate_reserved_id.split(",")
+          #@idArray.each do |t|
+          #  @horasFecha2 = HourdateReserved.find_by_id(t[2][2].to_f)
+          #  if @reservation.reserved_day == @_date
+          #    @horasFecha2.enable = false
+          #  else
+          #    @horasFecha2.enableTomorrow = false
+          #  end
+          #  @horasFecha2.save
+          #end
           format.html { redirect_to resassing_path(@reservation), notice: 'Reservation was successfully created.' }
           format.json { render :show, status: :created, location: @reservation }
       else
