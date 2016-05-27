@@ -13,14 +13,72 @@
         </ul>
       </div>
     </div>
-  <% end %
+  <% end %>
   
-  <div class="form-group">
-    <div class="col-lg-offset-2 col-lg-10">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                reservations_path, :class => 'btn btn-default' %>
+  <div class="page-header">
+  <h1>Selección del día y la hora</h1>
+</div>
+
+<div class="row">
+<div class = "form-group" >
+      <div class="col-md-4">
+        <h3>Dia de la reservación:</h3>
+      </div>  
+      <div class="col-md-8" >
+          </br>
+          <%= f.select :reserved_day, [["Hoy", @_date], ["Mañana", @_tomorrow]], {}, {class: "form-control", id: 'select_id'} %>
+      </div>
+      <%= f.error_span(:horaFinal) %>
     </div>
+</div>
+
+<% if @carrels != nil %>
+  <%= f.hidden_field :study_carrel_id, :value => @carrels.id %>
+  <%= f.hidden_field :student_id, :value => @student.id %>
+  <p id="demo"></p>
+  
+  <!-- falta validar que solo muestre las hoy disponibls de hoy -->
+  <div class="row">
+    <div class ="text-center" >
+    <div class="field">
+      
+      <h3>Horas Disponbles</h3>
+      <%= f.collection_check_boxes :hourdate_reserved_id, @carrels.hourdate_reserved , :id, :hora do |b| %>
+      <% if @carrels.hourdate_reserved.find_by_id(b.value).enable %>
+        <!-- horas de hoy  -->
+        <div class="collection-check-box col-md-4 horas">
+          <%= b.check_box %>
+          <%= b.text.strftime('%I:%M %p') %>      
+        </div>
+        <% elsif @carrels.hourdate_reserved.find_by_id(b.value).enableTomorrow %>
+        <!-- horas de manaña -->
+        <div class="collection-check-box col-md-4 horas">
+          <%= b.check_box %>
+          <%= b.text.strftime('%I:%M %p') %>      
+        </div>
+        <% else %>
+        <!-- solo mostramos las horas pero no el check_box -->
+        <div class="collection-check-box col-md-4 horas">
+          <%= b.text.strftime('%I:%M %p') %> 
+        </div>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+
   </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6">
+        <br />
+        <br />
+        <%= f.submit nil, :class => 'btn btn-primary salvar' %>
+        <%= link_to "Cancelar", carrels_path(@student), :class => 'btn btn-default' %>
+      </div>
+    </div>
+  <% end %>
+
+  </div>
+
 
 <% end %>

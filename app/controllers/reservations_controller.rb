@@ -3,6 +3,8 @@ class ReservationsController < ApplicationController
   require 'date'
 
   load_and_authorize_resource
+  
+  #before_filter :new
   # GET /reservations
   # GET /reservations.json
   def index
@@ -16,17 +18,13 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/new
   def new
-    @reservation = Reservation.new
-  end
-  
-  def reserved
     @_date = Date.today 
+    @_tomorrow = Date.today + 1
     @reservation = Reservation.new
     @carrels = StudyCarrel.includes(:hourdate_reserved).find(params[:carrel_id])
     @student = Student.find(params[:student_id])
-    
-    #@reservation = Reservation.find(params[:reservations_id])
   end
+  
 
   # GET /reservations/1/edit
   def edit
