@@ -40,16 +40,7 @@
 <% end %>
 
 
-<!-- just testing -->
-<%  @reservation.id %>
-<%  @carrels.max_number / 2 %>
-<!-- like a pro -->
-<% HourdateReserved.find_by_id(@reservation.hourdate_reserved_id[2,2].to_f).hora %>
-<% @arry = @reservation.hourdate_reserved_id.split(",") %>
-<% @arry.each do |t| %>
-<% t[2,2].to_f %>
 
-<% end %>
 
 
 

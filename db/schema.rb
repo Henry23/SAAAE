@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160525194138) do
+ActiveRecord::Schema.define(version: 20160527034636) do
 
   create_table "hourdate_reserveds", force: :cascade do |t|
     t.time     "hora"
