@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160527034636) do
+ActiveRecord::Schema.define(version: 20160610005227) do
 
   create_table "hourdate_reserveds", force: :cascade do |t|
     t.time     "hora"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20160527034636) do
     t.datetime "updated_at",     null: false
     t.string   "account_number"
     t.string   "rfid_id"
+    t.string   "email"
   end
 
   create_table "students_reserveds", force: :cascade do |t|

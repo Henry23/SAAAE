@@ -39,7 +39,9 @@ class Ability
         can :carrels, StudyCarrel
         can :reserved, Reservation
         can :create, Reservation
+        can :new, StudentsReserved
         can :create, StudentsReserved
       end 
     end
 end
+

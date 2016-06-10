@@ -1,3 +1,8 @@
+<script >
+  //validar esta cosa
+  
+</script>
+
 <%= form_for @students_reserved, :html => { :class => "form-horizontal students_reserved" } do |f| %>
 
   <% if @students_reserved.errors.any? %>
@@ -16,14 +21,14 @@
   <% end %>
 
 <!-- reservation -->
-<%= f.hidden_field :reservation_id, :value => @reservation.id %>
+ <%= f.hidden_field :reservation_id, :value => @reservation.id %>
 
 <!-- los studiantes -->
-
+<!-- ya funciona pero falta validar -->
   <% ( @carrels.max_number / 2 -1).times do |t| %>
      <%= f.label :student_id, "Carnet", :class => 'control-label col-lg-2' %>
       <div class="col-lg-10">
-        <%= f.text_field :student_id, :class => 'form-control', autofocus: true %>
+        <%= f.text_field :student_id, as: :array ,:class => 'form-control', autofocus: true, multiple: true %>
         <br />
       </div>
      <%=f.error_span(:hora) %>

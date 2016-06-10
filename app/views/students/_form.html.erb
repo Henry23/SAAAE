@@ -14,6 +14,14 @@
       </div>
     </div>
   <% end %>
+  
+  <div class= "form-group">
+    <%= f.label :emal, "Correo", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.email_field :email, :class => 'form-control' %>
+    </div>
+    <% f.error_span(:email) %>
+  </div>
 
   <div class="form-group">
     <%= f.label :account_number, "Numero de cuenta",:class => 'control-label col-lg-2' %>

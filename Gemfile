@@ -31,6 +31,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # super user or admin
 gem 'devise'
 gem "cancancan"
+gem 'delayed_job'
+gem 'delayed_job_active_record'
+gem 'mail'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

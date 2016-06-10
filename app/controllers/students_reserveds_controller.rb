@@ -1,6 +1,7 @@
 class StudentsReservedsController < ApplicationController
   before_action :set_students_reserved, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+  
+  #load_and_authorize_resource
   # GET /students_reserveds
   # GET /students_reserveds.json
   def index
@@ -27,7 +28,8 @@ class StudentsReservedsController < ApplicationController
   # POST /students_reserveds.json
   def create
     @students_reserved = StudentsReserved.new(students_reserved_params2)
-
+    @reservation = Reservation.find(@students_reserved.reservation_id)
+    @carrels = StudyCarrel.find_by_id(@reservation.study_carrel_id)
     respond_to do |format|
       if @students_reserved.save
         format.html { redirect_to home_path, notice: 'Students reserved was successfully created.' }
@@ -75,7 +77,7 @@ class StudentsReservedsController < ApplicationController
     end
     
     def students_reserved_params2
-      params.require(:students_reserved).permit(:reservation_id, :student_id => [] )
+      params.require(:students_reserved).permit(:reservation_id, student_id: [] )
     end
     
     rescue_from CanCan::AccessDenied do |exception|

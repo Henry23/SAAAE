@@ -4,6 +4,9 @@ var canvasContext = null;
 var WIDTH=500;
 var HEIGHT=50;
 var rafID = null;
+var contAlert=0;
+var cont=0;
+var maxCant=3;
 
 window.onload = function() {
 
@@ -67,14 +70,40 @@ function drawLoop( time ) {
     canvasContext.clearRect(0,0,WIDTH,HEIGHT);
 
     // check if we're currently clipping
-    if (meter.checkClipping())
+    if (meter.checkClipping()){
         canvasContext.fillStyle = "red";
-    else
+        cont++;
+    }else{
         canvasContext.fillStyle = "green";
-
+        
+    }
+    if (cont>=100){
+        cont=0;
+        if (contAlert>=0){
+            contAlert++;
+            document.getElementById("v_alert").innerHTML="Cantidad de alertas actual: "+contAlert
+            if (contAlert != maxCant){
+                tempAlert("Porfavor cuide su volumen!\n\n Dentro de "+(maxCant-contAlert)+" alertas mas todo se apagará!",5000);
+            }
+        }
+    }
+    if (contAlert >= maxCant){
+        contAlert=-1;
+        alert("WHY!!! MEOW!!! Q.Q!!! T.T!!!")
+    }
     // draw a bar based on the current volume
     canvasContext.fillRect(0, 0, meter.volume*WIDTH*1.4, HEIGHT);
 
     // set up the next visual callback
     rafID = window.requestAnimationFrame( drawLoop );
+}
+
+function tempAlert(msg,duration){
+    var el = document.createElement("div");
+    el.setAttribute("style","position:absolute;top:20%;left:50%;background-color:white;width:500px;height:500px");
+    el.innerHTML = "<h1>"+ msg + "</h1>";
+    setTimeout(function(){
+        el.parentNode.removeChild(el);
+    },duration);
+    document.body.appendChild(el);
 }
