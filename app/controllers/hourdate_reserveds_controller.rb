@@ -73,7 +73,7 @@ class HourdateReservedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hourdate_reserved_params
-      params.require(:hourdate_reserved).permit(:hora, :study_carrel_id, :enable, :horaFinal)
+      params.require(:hourdate_reserved).permit(:hora, :study_carrel_id, :enable, :horaFinal, :enableTomorrow)
     end
     
     rescue_from CanCan::AccessDenied do |exception|

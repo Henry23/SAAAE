@@ -51,6 +51,13 @@ class ReservationsController < ApplicationController
           #  end
           #  @horasFecha2.save
           #end
+          #@reservation.
+          #tiempoRestante = @reservation.reserved_day - tiempoActual 
+          #if tiempoRestante <= 15min
+          #UserMailer.welcome_email(@user).deliver_now
+          #else
+          #UserMailer.welcome_email(@user).deliver_later(wait_until: tiempoRestante.hours.from_now)
+          #end
           format.html { redirect_to resassing_path(@reservation), notice: 'Reservation was successfully created.' }
           format.json { render :show, status: :created, location: @reservation }
       else
