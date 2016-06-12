@@ -83,7 +83,7 @@ function drawLoop( time ) {
             contAlert++;
             document.getElementById("v_alert").innerHTML="Cantidad de alertas actual: "+contAlert
             if (contAlert != maxCant){
-                tempAlert("Porfavor cuide su volumen!\n\n Dentro de "+(maxCant-contAlert)+" alertas mas todo se apagará!",5000);
+                tempAlert("\nPor favor cuide su volumen!\n\n Dentro de "+(maxCant-contAlert)+" alertas más todo se apagará!",10000);
             }
         }
     }
@@ -100,7 +100,7 @@ function drawLoop( time ) {
 
 function tempAlert(msg,duration){
     var el = document.createElement("div");
-    el.setAttribute("style","position:absolute;top:20%;left:50%;background-color:white;width:500px;height:500px");
+    el.setAttribute("style","position:absolute;top:20%;left:40%;background-color:white;width:500px;height:500px");
     el.innerHTML = "<h1>"+ msg + "</h1>";
     setTimeout(function(){
         el.parentNode.removeChild(el);

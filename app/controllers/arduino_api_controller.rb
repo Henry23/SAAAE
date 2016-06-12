@@ -7,7 +7,9 @@ class ArduinoApiController < ApplicationController
         # @cubiculo = StudyCarrel.find_by_id(reservacion.study_carrel_id)
         #@cubiculo.max_number , @cubiculo.code etc....
         #end
-        @reservaciones = Reservation.all
+        @cubiculo = StudyCarrel.find_by(code: params[:id])
+        
+        @reservaciones = Reservation.where(study_carrel_id: @cubiculo)
         #params[:id]
         respond_to do |format|
             format.json{render json: @reservaciones }

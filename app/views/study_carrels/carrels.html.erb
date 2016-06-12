@@ -3,20 +3,53 @@
 <div class="row">
 	
 	<% @study_carrels.each do |carreles| %>
-			<div class="col-sm-6 col-md-4"> 
-				<div class="thumbnail">
-					<a class="cubiculos" href="#">
-						<div class="caption">
-							<h3>Codigo: <%= link_to carreles.code, rassign_path(carreles, @student) %></h3> 
-							<p> Capacidad maxima: 
-								 <%= carreles.max_number %> <%= image_tag("/assets/User-Group.png", width: '32', height: '32', alt: 'Site Logo', class: "logo") %></p>
-							 <p> Carnes requeridos:
-								 <%= carreles.max_number/2 %> <%= image_tag("/assets/Student-id-card.png", width: '32', height: '32', alt: 'Site Logo', class: "logo") %></p>
-						</div>
-					</a>
+			<%= link_to rassign_path(carreles, @student) do %>
+				<div class="col-sm-6 col-md-4"> 
+					<div class="panel ">
+						<h3>Codigo: <%= carreles.code%></h3> 
+						<p> Capacidad maxima: 
+							 <%= carreles.max_number %> <%= image_tag("/assets/User-Group.png", width: '32', height: '32', alt: 'Site Logo', class: "logo") %></p>
+						 <p> Carnes requeridos:
+							 <%= carreles.max_number/2 %> <%= image_tag("/assets/Student-id-card.png", width: '32', height: '32', alt: 'Site Logo', class: "logo") %></p>
+					</div>
 				</div>
-			</div>
+			<% end %>
 	<% end %>
 </div>
+<script type="text/javascript">
+	
+	//cambiar fondo de pantalla
+	$(document).ready(function(){
+		
+		
+		$('.panel').mouseenter(function()
+		{
+			$(this).css('background','#5cb85c');
+		});
+		
+		$('.jumbotron').removeClass('jumbotron').addClass('jumbotron-tmp');
+		
+		var background_img = $('body').css("background-image");
+		console.log(background_img);
+		$('body').css( "background-image", "url('/plano.png')");
+		$('body').css( "background-position", " center ");
+		$('body').css( "background-repeat", "no-repeat");
+		$('body').css( "background-position", "center top");
+		$('footer').hide();
+		
+		$($('.col-sm-6.col-md-4')[0]).css('top','85px');
+		$($('.col-sm-6.col-md-4')[0]).css('left','75px');
+		$($('.col-sm-6.col-md-4')[0]).css('width','275px');
+		
+		$($('.col-sm-6.col-md-4')[1]).css('top','90px');
+		$($('.col-sm-6.col-md-4')[1]).css('left','195px');
+		$($('.col-sm-6.col-md-4')[1]).css('width','350px');
+		
+		$($('.col-sm-6.col-md-4')[2]).css('left','265px');
+		$($('.col-sm-6.col-md-4')[2]).css('top','90px');
+		$($('.col-sm-6.col-md-4')[2]).css('width','230px');
+		
+	});
+</script>
 
 
