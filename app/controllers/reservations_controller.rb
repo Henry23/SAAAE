@@ -40,24 +40,6 @@ class ReservationsController < ApplicationController
     @_date = Date.today 
     respond_to do |format|
       if @reservation.save
-          #@horasFecha = StudyCarrel.includes(:hourdate_reserved).find_by_id(@reservation.study_carrel_id)
-          #@idArray = @reservation.hourdate_reserved_id.split(",")
-          #@idArray.each do |t|
-          #  @horasFecha2 = HourdateReserved.find_by_id(t[2][2].to_f)
-          #  if @reservation.reserved_day == @_date
-          #    @horasFecha2.enable = false
-          #  else
-          #    @horasFecha2.enableTomorrow = false
-          #  end
-          #  @horasFecha2.save
-          #end
-          #@reservation.
-          #tiempoRestante = @reservation.reserved_day - tiempoActual 
-          #if tiempoRestante <= 15min
-          #UserMailer.welcome_email(@user).deliver_now
-          #else
-          #UserMailer.welcome_email(@user).deliver_later(wait_until: tiempoRestante.hours.from_now)
-          #end
           format.html { redirect_to resassing_path(@reservation) }
           format.json { render :show, status: :created, location: @reservation }
       else

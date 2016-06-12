@@ -95,27 +95,35 @@ $(document).ready(function() {
   <div class="row">
     <div class ="text-center" >
     <div class="field">
-      
       <h3>Horas Disponbles</h3>
       <%= f.collection_check_boxes :hourdate_reserved_id, @carrels.hourdate_reserved , :id, :hora do |b| %>
+      <% if true %> <!-- falta validar aqui will  que si el cliente selecciona hoy o manaña -->
       <% if @carrels.hourdate_reserved.find_by_id(b.value).enable %>
         <!-- horas de hoy  -->
         <div class="collection-check-box col-md-4 horas">
           <%= b.check_box %>
           <%= b.text.strftime('%I:%M %p') %>      
         </div>
-        <% elsif @carrels.hourdate_reserved.find_by_id(b.value).enableTomorrow %>
+        <% else %>
+          <!-- solo mostramos las horas pero no el check_box -->
+          <div class="collection-check-box col-md-4 horas">
+            <%= b.text.strftime('%I:%M %p') %> 
+          </div>
+        <% end %>
+      <% else %>
+        <% if @carrels.hourdate_reserved.find_by_id(b.value).enableTomorrow %>
         <!-- horas de manaña -->
         <div class="collection-check-box col-md-4 horas">
           <%= b.check_box %>
           <%= b.text.strftime('%I:%M %p') %>      
         </div>
         <% else %>
-        <!-- solo mostramos las horas pero no el check_box -->
-        <div class="collection-check-box col-md-4 horas">
-          <%= b.text.strftime('%I:%M %p') %> 
-        </div>
+          <!-- solo mostramos las horas pero no el check_box -->
+          <div class="collection-check-box col-md-4 horas">
+            <%= b.text.strftime('%I:%M %p') %> 
+          </div>
         <% end %>
+      <% end %>  
       <% end %>
       </div>
     </div>

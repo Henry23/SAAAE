@@ -23,6 +23,25 @@ class Reservation < ActiveRecord::Base
                 message: "Seleccione al menos una hora para reservar"}
 
     after_save :check, :email_send
+    after_destroy :check_hours
+    
+    def check_hours
+        @horas = self.hourdate_reserved_id.split(",")# las horas las separamos si son varias hace el while
+        @fecha = self.reserved_day#fecha
+        @horas.each do |t|# horas
+            if t.gsub(/\D/, '') != 0 
+                @horafecha = HourdateReserved.find_by_id(t.gsub(/\D/, '')) # esto las trasforma a integer
+                if @horafecha != nil
+                    if @fecha == Date.today
+                        @horafecha.enable = 1
+                    else #mañana
+                        @horafecha.enableTomorrow = 1
+                    end
+                    @horafecha.save
+                end
+            end
+        end
+    end
     
     
     def check
